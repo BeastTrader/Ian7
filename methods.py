@@ -13,3 +13,13 @@ def calculate_returns(stock):
     perc_return = (end_price / start_price) ** (1 / n) - 1
 
     return perc_return
+
+
+def calculate_div_yield(stock):
+
+    data = stock.historical_data
+    dividends = stock.div_history
+    avg_dividend = dividends[['dividend']].mean()
+    latest_stock_price = data.iloc[-1]['price']
+
+    return avg_dividend/latest_stock_price
